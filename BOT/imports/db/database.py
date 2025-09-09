@@ -1,7 +1,7 @@
 import sqlite3
 
 def init_db():
-    con = sqlite3.connect("bot.db.sql")
+    con = sqlite3.connect("BotDB.db")
     cur = con.cursor()
     cur.execute(
         '''
