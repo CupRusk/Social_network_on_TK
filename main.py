@@ -1,4 +1,4 @@
-from Admin_panale import init_admin_win
+from window.Admin_panale import init_admin_win
 
 if __name__ == "__main__":
     print("Запуск админ панели...")
