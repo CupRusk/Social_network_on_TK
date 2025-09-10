@@ -7,8 +7,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <title>Добро пожаловать!</title>
 </head>
-<i class="bi bi-moon moon-icon"></i> 
 <body>
+    <i class="bi bi-moon moon-icon"></i> 
   <div class="hello">
     <div class="hello-text">
       <h1>Hello Bro!</h1>
@@ -28,11 +28,15 @@
 
         setTimeout(() => {
             if(black == false) {
-            document.body.style.background = "linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%)";
-            console.log("Градиент применён");
-            black = true
+                    
+                document.body.style.background = "rgb(12, 32, 48)";
+                document.body.style.background = "linear-gradient(311deg, rgba(12, 32, 48, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(12, 32, 87, 1) 100%)";
+                console.log("Тёмный градиент применён");
+                black = true;
             }
+
             else {
+                document.body.style.background = "#e0e0e0";
                 document.body.style.background = "linear-gradient(163deg, rgb(15, 66, 87) 20%, rgb(168, 241, 199) 60%)";
                 console.log("Градиент применён")
                 black = false;
