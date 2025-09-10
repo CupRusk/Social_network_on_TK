@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@keyframes FadeBody {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    color: #e0e0e0;
+    background: linear-gradient(163deg, rgb(15, 66, 87) 20%, rgb(168, 241, 199) 60%);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: all 2s ease;
+}
+.hello_text {
+    padding: 20px;
+}
+
+.hello {
+    text-align: center;
+    padding: 30px 40px;
+    background: rgba(0, 0, 0, 0.3); /* лёгкая подложка для читаемости */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(6px); /* эффект стекла */
+    
+    animation: FadeBody 1.5s ease-out forwards;
+}
+
+
+.hello h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.hello h2 {
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: #f1f1f1;
+}
+
+.hello button {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hello button:hover {
+    background: linear-gradient(135deg, #27ae60, #219150);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+                0 0 10px rgba(39, 174, 96, 0.6);
+}
+.moon-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.7rem;
+    color: #fff;
+    cursor: pointer; 
+    transition: all 0.3s;
+}
+
+.moon-icon:hover {
+    color: #759be2;
+    font-size: 2.2rem;
+}
+

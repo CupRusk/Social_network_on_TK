@@ -3,6 +3,7 @@ import multiprocessing
 import asyncio
 from BOT.tg_bot import init_bot
 # TODO: Сделать валидацию токенов, если токен например не правильный - выход с запуска.
+# TODO: Сделать рефакторинг, оно и сейчас читаемо. Но можно сделать лучшее.
 
 def init_admin_win():
     token = "ваш_токен"

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <title>Добро пожаловать!</title>
+</head>
+<i class="bi bi-moon moon-icon"></i> 
+<body>
+  <div class="hello">
+    <div class="hello-text">
+      <h1>Hello Bro!</h1>
+      <h2>This is registration for our website!</h2>
+    </div>
+    <button id="reg-btn">Go to registration</button>
+  </div>
+
+  <script>
+    black = false;
+    document.getElementById("reg-btn").addEventListener("click", () => {
+      window.location.href = "register.html";
+    });
+    document.querySelector(".moon-icon").addEventListener("click", () => {
+        document.body.style.background = "black";
+        console.log("Начало");
+
+        setTimeout(() => {
+            if(black == false) {
+            document.body.style.background = "linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%)";
+            console.log("Градиент применён");
+            black = true
+            }
+            else {
+                document.body.style.background = "linear-gradient(163deg, rgb(15, 66, 87) 20%, rgb(168, 241, 199) 60%)";
+                console.log("Градиент применён")
+                black = false;
+            }
+        }, 2000); // смена через 1 секунду
+    });
+
+
+  </script>
+</body>
+</html>
