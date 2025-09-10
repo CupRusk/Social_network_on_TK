@@ -6,10 +6,10 @@ from BOT.routers.reg import router as reg_router
 from BOT.routers.wait_the_pass import router as wait_the_pass_router
 
 
-def init_bot():
+def init_bot(Token):
     print("Бот активирован!")
 
-    API_TOKEN = "Токен"  # лучше вынести в .env
+    API_TOKEN = "8080089791:AAFH72zdQJIj1jP75ka0nEgJKHG1TaWYi_M"  # лучше вынести в .env
 
     # Инициализация бота и базы
     bot, dp, _ = init_aiogram_bot(API_TOKEN)
