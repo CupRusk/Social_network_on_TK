@@ -1,13 +1,21 @@
 import tkinter as tk
 import multiprocessing
-import asyncio
-from BOT.tg_bot import init_bot
-# TODO: Сделать валидацию токенов, если токен например не правильный - выход с запуска.
-# TODO: Сделать рефакторинг, оно и сейчас читаемо. Но можно сделать лучшее.
+
+from BOT.tg_bot import init_bot   
+from aiogram import Bot            
+from aiogram.utils.token import TokenValidationError  
+
+def validate_token(token: str) -> bool:
+    try:
+        Bot(token=token)
+        return True
+    except TokenValidationError:
+        return False
+
 
 def init_admin_win():
     token = "ваш_токен"
-    status_bot = False
+    status_bot = False  
     bot_process = None
 
     window = tk.Tk()
@@ -25,13 +33,20 @@ def init_admin_win():
 
     def start_bot_process():
         nonlocal status_bot, bot_process
-
+        
         if bot_process is None or not bot_process.is_alive():
-            bot_process = multiprocessing.Process(target=init_bot, args=(token,))
-            bot_process.start()
-            status_bot = True
-            bot_button.config(text="Выключить бота", command=stop_bot_process)
-            rename_Hello("Бот запущен!")
+            if not validate_token(token):
+                rename_Hello("Неверный токен")
+                return
+        
+            try:
+                bot_process = multiprocessing.Process(target=init_bot, args=(token,))
+                bot_process.start()
+                status_bot = True
+                bot_button.config(text="Выключить бота", command=stop_bot_process)
+                rename_Hello("Бот запущен!")
+            except Exception as e:
+                rename_Hello("Неизвестная ошибка")
 
     def stop_bot_process():
         nonlocal status_bot, bot_process
