@@ -1,0 +1,50 @@
+ #register_block {
+      background: rgba(0, 0, 0, 0.08);
+      padding: 30px 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 320px;
+    }
+
+    #register_block label {
+      font-size: 0.9rem;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    #register_block input[type="text"],
+    #register_block input[type="password"] {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    #register_block input:focus {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    #register_block .log_butt {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    #register_block .log_butt:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
