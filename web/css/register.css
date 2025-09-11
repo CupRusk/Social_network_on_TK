@@ -5,6 +5,10 @@
 }
 body {
     background: #1e1e1e;
+    background-image: url('https://images.unsplash.com/photo-1608447714925-599deeb5a682?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -13,4 +17,52 @@ body {
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.block {
+    width: 20px;
+    height: 638px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 0px;
+    overflow: hidden;
+}
+
+.left{
+    left: 0px;
+    background-color: azure;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    clip-path: polygon(
+        0 0,      /* чтобы не забыть*/       /* верхний левый */
+        calc(100% - 20px) 0, /* верхний правый срез */
+        100% 20px,       /* верхний правый срез */
+        100% calc(100% - 20px), /* нижний правый срез */
+        calc(100% - 20px) 100%, /* нижний правый срез */
+        0 100%           /* нижний левый */
+    );
+}
+.right{
+    right: 0px;
+    background-color: azure;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    right: 20px;
+    clip-path: polygon(
+        20px 0,    /* верхний левый срез */
+        100% 0,    /* верхний правый */
+        100% 100%, /* нижний правый без среза */
+        20px 100%, /* нижний левый срез */
+        0 calc(100% - 20px), /* левый нижний срез */
+        0 20px    /* левый верхний срез */
+    );
+}
 
