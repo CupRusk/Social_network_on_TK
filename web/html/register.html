@@ -9,17 +9,19 @@
     </head>
     <body>
         <form id="register_block">
-            <input type="text" name="nick" placeholder="Enter your nickname">
+            <h1 style="color: rgb(169, 169, 169); text-align: center;" class="title_top">Register</h1>
+            <input id="pass" type="text" name="nick_register" placeholder="Enter your nickname">
 
-            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <input id="pass" type="password" name="pass_register" placeholder="Enter your password">
 
             <label>
-                <input type="checkbox" id="show_pass"> Показать пароль
+                <input type="checkbox" id="show_pass"> Show the pass
             </label>
-
-            <button type="submit" class="log_butt">Login</button>
+            <a style="color: white; text-align: start;"id="Sign_in" href="#">Sign in</a>
+            <button id="submit" class="log_butt">Login</button>
         </form>
         <script src="../js/index.js"></script>
+        <script src="../js/swap_reg.js"></script>
         <div class="block right"></div>
         <div class="block left"></div>
     </body>

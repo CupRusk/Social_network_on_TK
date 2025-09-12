@@ -36,7 +36,7 @@ def init_admin_win():
         
         if bot_process is None or not bot_process.is_alive():
             if not validate_token(token):
-                rename_Hello("Неверный токен")
+                rename_Hello("Невевалидный токен")
                 return
         
             try:

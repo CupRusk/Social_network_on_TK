@@ -9,7 +9,7 @@ from BOT.routers.wait_the_pass import router as wait_the_pass_router
 def init_bot(Token):
     print("Бот активирован!")
 
-    API_TOKEN = ""  # лучше вынести в .env
+    API_TOKEN = Token
 
     # Инициализация бота и базы
     bot, dp, _ = init_aiogram_bot(API_TOKEN)
