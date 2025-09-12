@@ -1,72 +1,57 @@
 import tkinter as tk
 import multiprocessing
-
-from BOT.tg_bot import init_bot   
-from aiogram import Bot            
-from aiogram.utils.token import TokenValidationError  
-
-def validate_token(token: str) -> bool:
-    try:
-        Bot(token=token)
-        return True
-    except TokenValidationError:
-        return False
-
+from BOT.tg_bot import init_bot
+from window.valid_token import validate_token
 
 def init_admin_win():
-    token = "ваш_токен"
-    status_bot = False  
+    token = ""
     bot_process = None
 
     window = tk.Tk()
     window.title("Админ панель")
     window.geometry("400x200")
 
-    Welcome_label = tk.Label(window, text="Привет! Админ панель для вас!", font=("Arial", 14))
-    Welcome_label.pack(pady=10)
+    welcome_label = tk.Label(window, text="Привет! Админ панель для вас!", font=("Arial", 14))
+    welcome_label.pack(pady=10)
 
     entry_field = tk.Entry(window, width=30)
     entry_field.pack(pady=10)
 
-    def rename_Hello(new_text):
-        Welcome_label.config(text=new_text)
+    bot_button = tk.Button(window, text="Запустить бота", state="disabled")
+    bot_button.pack(pady=20)
 
-    def start_bot_process():
-        nonlocal status_bot, bot_process
-        
-        if bot_process is None or not bot_process.is_alive():
-            if not validate_token(token):
-                rename_Hello("Невевалидный токен")
-                return
-        
-            try:
-                bot_process = multiprocessing.Process(target=init_bot, args=(token,))
-                bot_process.start()
-                status_bot = True
-                bot_button.config(text="Выключить бота", command=stop_bot_process)
-                rename_Hello("Бот запущен!")
-            except Exception as e:
-                rename_Hello("Неизвестная ошибка")
+    def update_status(text: str):
+        welcome_label.config(text=text)
 
-    def stop_bot_process():
-        nonlocal status_bot, bot_process
+    def toggle_bot():
+        nonlocal bot_process
         if bot_process and bot_process.is_alive():
             bot_process.terminate()
-        status_bot = False
-        bot_button.config(text="Запустить бота", command=start_bot_process)
-        rename_Hello("Бот остановлен!")
+            bot_process = None
+            bot_button.config(text="Запустить бота")
+            update_status("Бот остановлен!")
+        else:
+            if not validate_token(token):
+                update_status("Невалидный токен")
+                return
+            bot_process = multiprocessing.Process(target=init_bot, args=(token,))
+            bot_process.start()
+            bot_button.config(text="Выключить бота")
+            update_status("Бот запущен!")
 
-    def input_token():
+    def set_token():
         nonlocal token
         token = entry_field.get()
-        rename_Hello("Токен установлен")
-        bot_button.config(state="normal")
+        if validate_token(token):
+            update_status("Токен установлен")
+            bot_button.config(state="normal")
+        else:
+            update_status("Невалидный токен")
 
-    token_button = tk.Button(window, text="Установить токен", command=input_token)
+    token_button = tk.Button(window, text="Установить токен", command=set_token)
     token_button.pack(pady=5)
 
-    bot_button = tk.Button(window, text="Запустить бота", command=start_bot_process, state="disabled")
-    bot_button.pack(pady=20)
+    bot_button.config(command=toggle_bot)
 
     def on_closing():
         nonlocal bot_process
